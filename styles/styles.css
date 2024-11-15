@@ -62,8 +62,7 @@ nav {
     text-align: left;
 }
 
-.habit-div {
-    text-align: left;
+.habit-div {    
     background-color: #f5f5f5;
     color: #212121;
     padding: 10vh;
@@ -72,14 +71,45 @@ nav {
     border-radius: 2vw;
 }
 
-.habit-div input {
-    text-align: left;
+.habit {
+    background-color: #f5f5f5;
+    color: #212121;
+    padding: 10vh;
+    margin: 5vh;
+    width:70vw;
+    border-radius: 2vw;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+.habit br {
+    width: 50vw;
+}
+
+.habit button {
+    background-color: #f5f5f5;
+    border: none;
+    margin-right: 10vw;
+}
+
+.habit button img {
+    width: 3vw;
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+}
+
+#input {
+    text-align: center;
     background-color: #f5f5f5;
     color: #212121;
     border: none;
-    width: 15vw;
+    border-radius: 10px;
+    width: 20vw;
     font-size: 20px;
     font-weight: bold;
+    margin-right: 2vw;
 }
 
 footer {

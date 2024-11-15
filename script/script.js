@@ -1,5 +1,3 @@
-let habits = 1 // Add local storage to this
-
 // HTML Elements
 const no_habits_el = document.getElementById("no-habits");
 const add_habits1_el = document.getElementById("add-habits1");
@@ -8,11 +6,12 @@ const habits_el = document.getElementById("habits")
 const quote_el = document.getElementById("quote");
 const habits_div_el = document.getElementById("habits-div")
 
+let input_el = document.getElementById("input")
+
 // Adding a habit from no habits
-function addHabit1() {
+function changePage() {
     no_habits_el.style.display = "none";
     habits_el.style.display = "flex";
-    habits++
 }
 
 // Quote Generation
@@ -152,7 +151,7 @@ const quotes = [
     "Either write something worth reading or do something worth writing. Benjamin Franklin"
     ,
 
-    "Nothing is impossible, the word itself says, “I’m possible!” –Audrey Hepburn"
+    "Nothing is impossible, the word itself says, “I’m possible!” Audrey Hepburn"
     ,
 
     "The only way to do great work is to love what you do. Steve Jobs"
@@ -166,29 +165,50 @@ let random_quote = Math.floor(Math.random()*quotes.length + 1)
 let quote = quotes[random_quote]
 quote_el.innerHTML = quote
 
-// Function for adding a habit
-let habit_num = 0;
+let habit_num = localStorage.getItem('habit_num') ? JSON.parse(localStorage.getItem('habit_num')) : 0; 
+let habitArray = localStorage.getItem('habitArray') ? JSON.parse(localStorage.getItem('habitArray')) : [];
+let habitDivArray = localStorage.getItem('habitDivArray') ? JSON.parse(localStorage.getItem('habitDivArray')) : [];
 
-function addHabit() {
-    const habitId = `habit-${habit_num}`;
-    const new_habit = `
-        <div class="habit-div">
-            <h3><input type="text" placeholder="" id="${habitId}" class="inputField"></input></h3>
-        </div>`;
-
-    habits_div_el.innerHTML += new_habit;
-    habit_num++;
+// Function to save data to localStorage
+function saveToLocalStorage() {
+    localStorage.setItem('habit_num', JSON.stringify(habit_num));
+    localStorage.setItem('habitArray', JSON.stringify(habitArray));
+    localStorage.setItem('habitDivArray', JSON.stringify(habitDivArray));
 }
 
-// Function for identifying each and every habit
-let habitArray = []
+// Function for adding a habit
+function addHabit() {
+    const input = input_el.value;
+    const new_habit = `
+        <div class="habit" id="habit-${habit_num}">
+            <h3>${input}</h3>
+            <h3>Count: </h3>
+            <h3 id="count-${habit_num}">0</h3>
+            <br>
+            <button onclick="incrementCount(${habit_num})"><img src="/media/check-bold.svg"></button>
+        </div>`;
+    habitDivArray.push(new_habit)
+    habits_div_el.innerHTML = habitDivArray.join('');
+    habitArray.push([habit_num, input, 0]); // Initialize the habit in the array
+    habit_num++;
+    saveToLocalStorage();
+}
 
-inputField.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") { 
-        const value = inputField.value; 
-        const count = 0
-        let id = `habit-${habit_num-1}`
-        habitArray.push([id, value, count])
-        console.log(habitArray)
+// Function to increment the count for a specific habit
+function incrementCount(habitIndex) {
+    habitArray[habitIndex][2]++; // Increment the count in the array
+    let counter = document.getElementById(`count-${habitIndex}`);
+    counter.innerHTML = habitArray[habitIndex][2]; // Update the display
+    console.log(habitArray); // Log the updated array
+    saveToLocalStorage()
+}
+
+// Load habits when the page loads
+window.addEventListener("load", () => {
+    if (habitArray.length > 0) {
+        no_habits_el.style.display = "none";
+        habits_el.style.display = "flex";
+
+        habits_div_el.innerHTML = habitDivArray.join(''); // Join the array elements to display
     }
-})
+});
