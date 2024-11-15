@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Quicksand", sans-serif;
+}
+
+nav {
+    width: 100%;
+    height: 15vh;
+    padding: 10px 20px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e50;
+    color: #ff6f00;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    width: 50px;
+}
+
+#main {
+    padding: 20vh;
+    background-color: #ff6f00;
+}
+
+.div {
+    text-align: center;
+    background-color: #f5f5f5;
+    color: #212121;
+    padding: 10vh;
+    margin: 5vh;
+    width:70vw;
+    border-radius: 2vw;
+}
+
+.add-habits-button {
+    background-color: #2c3e50;
+    color: #ff6f00;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 3vh 5vw;
+    border: 0;
+    border-radius: 10px;
+}
+#habits {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#quote-div {
+    font-style: italic;
+    font-weight: 300;
+}
+
+#habits-header {
+    text-align: left;
+}
+
+.habit-div {
+    text-align: left;
+    background-color: #f5f5f5;
+    color: #212121;
+    padding: 10vh;
+    margin: 5vh;
+    width:70vw;
+    border-radius: 2vw;
+}
+
+.habit-div input {
+    text-align: left;
+    background-color: #f5f5f5;
+    color: #212121;
+    border: none;
+    width: 15vw;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+footer {
+    width: 100%;
+    height: 10vh;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #37474f;
+    color: #ff6f00;
+    font-size: 2vh;
+}

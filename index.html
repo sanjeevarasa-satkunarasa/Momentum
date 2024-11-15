@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momentum</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="icon" type="image/x-icon" href="/media/checkbox-checked.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/media/checkbox-checked.svg">
+            <h1>Momentum</h1>
+        </div>
+        <div>
+        </div>
+        <div>
+            <h2>Help</h2>
+        </div>
+    </nav>
+    <div id="main">
+        <div id="no-habits" class="div">
+            <h3>You currently have no habits</h3>
+            <br>
+            <button class="add-habits-button" onclick="addHabit1()">Add Habits</button>
+        </div>
+        <div id="habits" style="display: none;">
+            <div id="quote-div" class="div">
+                <h3 id="quote"></h3>
+            </div>
+            <div id="habits-div">
+                <div id="habits-header" class="div">
+                    <h3>Habits</h3>
+                </div>
+            </div>
+            <button class="add-habits-button" onclick="addHabit()">Add Habits</button>
+        </div>
+    </div>
+    <footer>
+        <h2>© Sanjeevarasa Satkunarasa</h2>
+        <h2>All Rights Reserved</h2>
+    </footer>
+    <script src="script/script.js"></script>
+</body>
+
+</html>
