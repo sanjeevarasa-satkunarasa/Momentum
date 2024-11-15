@@ -181,13 +181,13 @@ function addHabit() {
     const input = input_el.value;
     const new_habit = `
     <div class="habit" id="habit-${habit_num}">
-        <h3>${input}</h3>
-        <h3>Count: </h3>
-        <h3 id="count-${habit_num}">0</h3>
-        <br>
-        <div class="button-container">
-            <button onclick="incrementCount(${habit_num})"><img src="/media/check-bold.svg"></button>
+        <div>
+            <h3>${input}</h3>
+            <h3>Count: </h3>
+            <h3 id="count-${habit_num}">0</h3>
         </div>
+        <br>
+        <button onclick="incrementCount(${habit_num})"><img src="/media/check-bold.svg"></button>
     </div>`;
     habitDivArray.push(new_habit)
     habits_div_el.innerHTML = habitDivArray.join('');
