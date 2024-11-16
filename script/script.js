@@ -1,21 +1,21 @@
 // HTML Elements
-const no_habits_el = document.getElementById("no-habits");
-const add_habits1_el = document.getElementById("add-habits1");
+const noHabitsEl = document.getElementById("noHabits");
+const addHabits1El = document.getElementById("addHabits1");
 
-const habits_el = document.getElementById("habits")
-const quote_el = document.getElementById("quote");
-const habits_div_el = document.getElementById("habits-div")
+const habitsEl = document.getElementById("habits");
+const quoteEl = document.getElementById("quote");
+const habitsDivEl = document.getElementById("habitsDiv");
 
-let input_el = document.getElementById("input")
+let inputEl = document.getElementById("input");
 
 // Adding a habit from no habits
 function changePage() {
-    no_habits_el.style.display = "none";
-    habits_el.style.display = "flex";
+    noHabitsEl.style.display = "none";
+    habitsEl.style.display = "flex";
 }
 
 // Quote Generation
-const quotes = [
+const quotes = [ // Quotes from Github
     "If you’re offered a seat on a rocket ship, don’t ask what seat! Just get on. Sheryl Sandberg"
     ,
 
@@ -161,56 +161,65 @@ const quotes = [
 
 ];
 
-let random_quote = Math.floor(Math.random()*quotes.length + 1)
-let quote = quotes[random_quote]
-quote_el.innerHTML = quote
+let randomQuote = Math.floor(Math.random() * quotes.length);
+let quote = quotes[randomQuote];
+quoteEl.innerHTML = quote;
 
-let habit_num = localStorage.getItem('habit_num') ? JSON.parse(localStorage.getItem('habit_num')) : 0; 
+// Retrieving data form local storage
+let habitNum = localStorage.getItem('habitNum') ? JSON.parse(localStorage.getItem('habitNum')) : 0;
 let habitArray = localStorage.getItem('habitArray') ? JSON.parse(localStorage.getItem('habitArray')) : [];
 let habitDivArray = localStorage.getItem('habitDivArray') ? JSON.parse(localStorage.getItem('habitDivArray')) : [];
 
-// Function to save data to localStorage
+// Function for saving data to localStorage
 function saveToLocalStorage() {
-    localStorage.setItem('habit_num', JSON.stringify(habit_num));
+    localStorage.setItem('habitNum', JSON.stringify(habitNum));
     localStorage.setItem('habitArray', JSON.stringify(habitArray));
     localStorage.setItem('habitDivArray', JSON.stringify(habitDivArray));
 }
 
 // Function for adding a habit
 function addHabit() {
-    const input = input_el.value;
-    const new_habit = `
-    <div class="habit" id="habit-${habit_num}">
+    const input = inputEl.value;
+    const newHabit = `
+    <div class="habit" id="habit-${habitNum}">
         <div>
             <h3>${input}</h3>
             <h3>Count: </h3>
-            <h3 id="count-${habit_num}">0</h3>
+            <h3 id="count-${habitNum}">0</h3>
         </div>
         <br>
-        <button onclick="incrementCount(${habit_num})"><img src="/media/check-bold.svg"></button>
+        <button onclick="incrementCount(${habitNum})"><img src="/media/check-bold.svg" alt="checkmark"></button>
     </div>`;
-    habitDivArray.push(new_habit)
-    habits_div_el.innerHTML = habitDivArray.join('');
-    habitArray.push([habit_num, input, 0]); // Initialize the habit in the array
-    habit_num++;
+    habitDivArray.push(newHabit);
+    habitsDivEl.innerHTML = habitDivArray.join('');
+    habitArray.push([habitNum, input, 0]); // Initialize the habit in the array
+    habitNum++;
     saveToLocalStorage();
 }
 
 // Function to increment the count for a specific habit
 function incrementCount(habitIndex) {
-    habitArray[habitIndex][2]++; // Increment the count in the array
+    habitArray[habitIndex][2]++; 
     let counter = document.getElementById(`count-${habitIndex}`);
-    counter.innerHTML = habitArray[habitIndex][2]; // Update the display
-    console.log(habitArray); // Log the updated array
-    saveToLocalStorage()
+    counter.innerHTML = habitArray[habitIndex][2]; 
+    console.log(habitArray); 
+    saveToLocalStorage();
 }
 
 // Load habits when the page loads
 window.addEventListener("load", () => {
     if (habitArray.length > 0) {
-        no_habits_el.style.display = "none";
-        habits_el.style.display = "flex";
+        noHabitsEl.style.display = "none";
+        habitsEl.style.display = "flex";
 
-        habits_div_el.innerHTML = habitDivArray.join(''); // Join the array elements to display
+        habitsDivEl.innerHTML = habitDivArray.join(''); // Join the array elements to display them as one string
+        for (let i = 0; i < habitArray.length; i++) {
+            const habitId = habitArray[i][0];
+            const count = habitArray[i][2];
+            let counter = document.getElementById(`count-${habitId}`);
+            if (counter) {
+                counter.innerHTML = count; 
+            }
+        }
     }
 });

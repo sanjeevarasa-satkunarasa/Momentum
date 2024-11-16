@@ -8,39 +8,39 @@
     <link rel="icon" type="image/x-icon" href="/media/checkbox-checked.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet"> <!--Imported Quicksand font from Google Font-->
 </head>
 <body>
     <nav>
         <div class="logo">
-            <img src="/media/checkbox-checked.svg">
-            <h1>Momentum</h1>
+            <img src="/media/checkbox-checked.svg" alt="momentum logo">
+            <a href="index.html">Momentum</a>
         </div>
         <div>
         </div>
         <div>
-            <a>Help</a>
+            <a href="/html/help.html">Help</a>
         </div>
     </nav>
     <div id="main">
-        <div id="no-habits" class="div">
+        <div id="noHabits" class="div"> <!--Div for when there is no habit-->
             <h3>You currently have no habits</h3>
             <br>
-            <button class="add-habits-button" onclick="changePage()">Add Habits</button>
+            <button class="addHabitsButton" onclick="changePage()">Add Habits</button>
         </div>
-        <div id="habits" style="display: none;">
-            <div id="quote-div" class="div">
+        <div id="habits" style="display: none;"> <!--Div for when there are habits-->
+            <div id="quoteDiv" class="div">
                 <h3 id="quote"></h3>
             </div>
-            <div id="habits-header" class="div">
+            <div id="habitsHeader" class="div">
                 <h3>Habits</h3>
             </div>
-            <div id="habits-div">
+            <div id="habitsDiv">
                 
             </div>
             <div>
-                <input placeholder="Enter Habit" id="input">
-                <button class="add-habits-button" onclick="addHabit()">Add Habit</button>
+                <input placeholder="Enter Habit" id="input" alt="enter habit">
+                <button class="addHabitsButton" onclick="addHabit()">Add Habit</button>
             </div>
         </div>
     </div>
