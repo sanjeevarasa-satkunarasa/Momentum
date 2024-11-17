@@ -199,7 +199,7 @@ function addHabit() {
 
 // Function to increment the count for a specific habit
 function incrementCount(habitIndex) {
-    habitArray[habitIndex][2]++; 
+    habitArray[habitIndex][2]++; // Increasing count in habit array
     let counter = document.getElementById(`count-${habitIndex}`);
     counter.innerHTML = habitArray[habitIndex][2]; 
     console.log(habitArray); 
